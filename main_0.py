@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""this is a coment"""
 
 canUnlockAll = __import__('0-lockboxes').canUnlockAll
 
