@@ -1,5 +1,8 @@
 #!/usr/bin/python3
+
 """ Min Op"""
+
+
 def minOperations(n):
     if not isinstance(n, int) or n <= 1:
         return 0
@@ -21,8 +24,7 @@ def minOperations(n):
 
 def minimumSpanning(n, inicio, clipBoard, action, opt):
     """
-    will go through the options to find the shortest
-    The proble is that consume to much space, seem to be an infinite recursion
+   on
     """
 
     if inicio == n:
@@ -36,7 +38,7 @@ def minimumSpanning(n, inicio, clipBoard, action, opt):
         opt += 2
     elif action == "Paste":
         inicio += clipBoard
-        opt += 1 #the incremental variable
+        opt += 1
 
     copiar = minimumSpanning(n, inicio, clipBoard, "CopyPaste", opt)
     pegar = minimumSpanning(n, inicio, clipBoard, "Paste", opt)
