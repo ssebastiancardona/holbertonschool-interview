@@ -65,7 +65,7 @@ int fixt(int grid[3][3], int i, int j)
  */
 void ciclog(int grid[3][3])
 {
-	int i, j, ines = 1, t = 1;
+	int i, j, ines = 1, t = 0;
 	int copiagrilla[3][3];
 
 	while (ines)
