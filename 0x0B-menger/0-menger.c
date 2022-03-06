@@ -20,11 +20,10 @@ void menger(int level)
 	}
 }
 
-
 /**
  * hash_space - gets a character
  * @colum: column
- * @row: row
+ * @fila: row
  * Return: '#' or ' '
  */
 char hash_space(int colum, int fila)
