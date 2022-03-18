@@ -8,31 +8,31 @@ if __name__ == "__main__":
         print("Usage: nqueens N")
         exit(1)
 
-    kns = argv[1]
+    queens = argv[1]
 
     try:
-        kns = int(kns)
+        queens = int(queens)
     except ValueError:
         print("N must be a number")
         exit(1)
 
-    if kns < 4:
+    if queens < 4:
         print("N must be at least 4")
         exit(1)
 
-    solution = []
+    sol = []
 
-    def nqueens(row, queens, solution):
+    def nqueens(row, queens, sol):
         """ commet to """
         if (row == queens):
-            print(solution)
+            print(sol)
         else:
             for col in range(queens):
                 pos = [row, col]
-                if validposition(solution, pos):
-                    solution.append(pos)
-                    nqueens(row + 1, queens, solution)
-                    solution.remove(pos)
+                if validposition(sol, pos):
+                    sol.append(pos)
+                    nqueens(row + 1, queens, sol)
+                    sol.remove(pos)
 
     def validposition(solution, position):
         """ commet to """
@@ -43,4 +43,4 @@ if __name__ == "__main__":
                 return False
         return True
 
-    nqueens(0, kns, solution)
+    nqueens(0, queens, sol)
