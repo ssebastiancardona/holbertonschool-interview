@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" module docs """
+""" commet to """
 from sys import argv, exit
 
 if __name__ == "__main__":
@@ -20,27 +20,27 @@ if __name__ == "__main__":
         print("N must be at least 4")
         exit(1)
 
-    sol = []
+    solution = []
 
-    def nqueens(row, queens, sol):
-        """ method docs """
+    def nqueens(row, queens, solution):
+        """ commet to """
         if (row == queens):
-            print(sol)
+            print(solution)
         else:
             for col in range(queens):
-                p = [row, col]
-                if validposition(sol, p):
-                    sol.append(p)
-                    nqueens(row + 1, queens, sol)
-                    sol.remove(p)
+                pos = [row, col]
+                if validposition(solution, pos):
+                    solution.append(pos)
+                    nqueens(row + 1, queens, solution)
+                    solution.remove(pos)
 
-    def validposition(sol, pos):
-        """ method docs """
-        for n in sol:
-            if n[1] == pos[1] or \
-                (n[0] - n[1]) == (pos[0] - pos[1]) or \
-                    (n[0] + n[1]) == (pos[0] + pos[1]):
+    def validposition(solution, position):
+        """ commet to """
+        for n in solution:
+            if n[1] == position[1] or \
+                (n[0] - n[1]) == (position[0] - position[1]) or \
+                    (n[0] + n[1]) == (position[0] + position[1]):
                 return False
         return True
 
-    nqueens(0, kns, sol)
+    nqueens(0, kns, solution)
