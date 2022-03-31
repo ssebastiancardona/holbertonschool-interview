@@ -9,13 +9,13 @@
  */
 void print_found(size_t f_idx, size_t s_idx, skiplist_t *end)
 {
-    if (end != NULL)
-    {
-        while (end->next != NULL)
-            end = end->next;
-        s_idx = end->index;
-    }
-    printf("Value found between indexes [%lu] and [%lu]\n", f_idx, s_idx);
+	if (end != NULL)
+	{
+		while (end->next != NULL)
+			end = end->next;
+		s_idx = end->index;
+	}
+	printf("Value found between indexes [%lu] and [%lu]\n", f_idx, s_idx);
 }
 /**
  * print_check - imprimir mensaje
@@ -26,7 +26,7 @@ void print_found(size_t f_idx, size_t s_idx, skiplist_t *end)
  */
 void print_check(size_t idx, int value)
 {
-    printf("Value checked at index [%lu] = [%i]\n", idx, value);
+	printf("Value checked at index [%lu] = [%i]\n", idx, value);
 }
 /**
  * find_each - comprobar siguiente por siguiente
@@ -37,17 +37,17 @@ void print_check(size_t idx, int value)
  */
 skiplist_t *find_each(skiplist_t *head, int value)
 {
-    skiplist_t *current = head;
+	skiplist_t *current = head;
 
-    if (head == NULL)
-        printf("n head nullll");
-    for (; current; current = current->next)
-    {
-        print_check(current->index, current->n);
-        if (current->n == value)
-            return (current);
-    }
-    return (NULL);
+	if (head == NULL)
+		printf("n head nullll");
+	for (; current; current = current->next)
+	{
+		print_check(current->index, current->n);
+		if (current->n == value)
+			return (current);
+	}
+	return (NULL);
 }
 /**
  * linear_skip - encontró un valor en la lista de saltos
@@ -58,30 +58,30 @@ skiplist_t *find_each(skiplist_t *head, int value)
  */
 skiplist_t *linear_skip(skiplist_t *head, int value)
 {
-    skiplist_t *cur = head, *next = NULL;
+	skiplist_t *cur = head, *next = NULL;
 
-    if (head == NULL)
-        return (NULL);
+	if (head == NULL)
+		return (NULL);
 
-    while (cur != NULL)
-    {
-        next = cur->express;
-        if (next != NULL)
-        {
-            print_check(next->index, next->n);
-            if (next->n >= value)
-            {
-                print_found(cur->index, next->index, NULL);
-                return (find_each(cur, value));
-            }
+	while (cur != NULL)
+	{
+		next = cur->express;
+		if (next != NULL)
+		{
+			print_check(next->index, next->n);
+			if (next->n >= value)
+			{
+				print_found(cur->index, next->index, NULL);
+				return (find_each(cur, value));
+			}
 
-            if (next->express == NULL)
-            {
-                print_found(next->index, 0, next);
-                return (find_each(next, value));
-            }
-        }
-        cur = cur->express;
-    }
-    return (NULL);
+			if (next->express == NULL)
+			{
+				print_found(next->index, 0, next);
+				return (find_each(next, value));
+			}
+		}
+		cur = cur->express;
+	}
+	return (NULL);
 }
