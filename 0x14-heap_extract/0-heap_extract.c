@@ -135,5 +135,5 @@ int heap_extract(heap_t **root)
 	free(node);
 	heapify(heap_r);
 	*root = heap_r;
-	return (value);
+	return (val);
 }
