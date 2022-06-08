@@ -1,31 +1,28 @@
 #!/usr/bin/node
+
 const request = require('request');
+const dna = process.argv[2];
 
-async function sw (id) {
-  const url = `https://swapi-api.hbtn.io/api/films/${id}`;
+const url = 'https://swapi-api.hbtn.io/api/films/' + dna;
 
-  request(url, async (err, res, body) => {
+function getName (characters, idx) {
+  if (characters.length === idx) {
+    return;
+  }
+  request(characters[idx], function (err, res, body) {
     if (err) {
-      console.log(err);
-    } else {
-      for (const c of JSON.parse(body).characters) {
-        const soll = () => {
-          return new Promise((resolve, reject) => {
-            request(c, (err, res, body) => {
-              if (err) {
-                console.log(err);
-              } else {
-                resolve(JSON.parse(body).name);
-              }
-            });
-          });
-        };
-        console.log(await soll());
-      }
+      console.error(err);
     }
+    const actor = JSON.parse(body).name;
+    console.log(actor);
+    getName(characters, ++idx);
   });
 }
 
-if (process.argv.length === 3) {
-  sw(process.argv[2]);
-}
+request(url, function (err, res, body) {
+  if (err) {
+    console.error(err);
+  }
+  const charact = JSON.parse(body).characters;
+  getName(charact, 0);
+});
