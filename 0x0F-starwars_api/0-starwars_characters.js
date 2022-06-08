@@ -1,17 +1,17 @@
 #!/usr/bin/node
-const req = require('request');
+const request = require('request');
 
 async function sw (id) {
   const url = `https://swapi-api.hbtn.io/api/films/${id}`;
 
-  req(url, async (err, res, body) => {
+  request(url, async (err, res, body) => {
     if (err) {
       console.log(err);
     } else {
       for (const c of JSON.parse(body).characters) {
-        const sol = () => {
+        const soll = () => {
           return new Promise((resolve, reject) => {
-            req(c, (err, res, body) => {
+            request(c, (err, res, body) => {
               if (err) {
                 console.log(err);
               } else {
@@ -20,7 +20,7 @@ async function sw (id) {
             });
           });
         };
-        console.log(await sol());
+        console.log(await soll());
       }
     }
   });
