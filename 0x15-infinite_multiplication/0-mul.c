@@ -17,68 +17,68 @@ void print_num(int *nums3, int size)
 		printf("0\n");
 		exit(0);
 	}
-	while (nums3[i] == 0)
+	while (nums3[n] == 0)
 		n++;
 	for (; n < size; n++)
 	{
-		printf("%d", nums3[i]);
+		printf("%d", nums3[n]);
 	}
 	printf("\n");
 }
 
 /**
- * multiplicar - multiplica dos números grandes
+ * multiply - multiplica dos números grandes
  * @nums1: representación de cadena de int grande
  * @nums2: representación de cadena de int grande
  * Retorno: 1 en caso de éxito, 0 en caso de error
  */
 int multiply(char *nums1, char *nums2)
 {
-	int n, j;
-	int len1, len2, sum, n1, n2 = 0;
+	int i, j;
+	int l1, l2, sum, n1, n2 = 0;
 	int *nums3;
 
-	len1 = strlen(nums1);
-	len2 = strlen(nums2);
+	l1 = strlen(nums1);
+	l2 = strlen(nums2);
 
-	nums3 = calloc(len1 + len2, sizeof(len1 + len2));
+	nums3 = calloc(l1 + l2, sizeof(l1 + l2));
 	if (!nums3)
 		return (0);
 
-	for (n = len1 - 1; n >= 0; n--)
+	for (i = l1 - 1; i >= 0; i--)
 	{
-		n1 = nums1[n] - '0';
-		for (j = len2 - 1; j >= 0; j--)
+		n1 = nums1[i] - '0';
+		for (j = l2 - 1; j >= 0; j--)
 		{
 			n2 = nums2[j] - '0';
 			sum = (n1 * n2) + nums3[i + j + 1];
-			nums3[n + j] += sum / 10;
-			nums3[n + j + 1] = sum % 10;
+			nums3[i + j] += sum / 10;
+			nums3[i + j + 1] = sum % 10;
 		}
 	}
-	print_num(nums3, len1 + len2);
+	print_num(nums3, l1 + l2);
 	free(nums3);
 	return (1);
 }
 
 /**
- * principal - Punto de entrada: multiplica dos números positivos
+ * main - Punto de entrada: multiplica dos números positivos
  * @argc: número de argumentos pasados
  * @argv: argumentos pasados ​​(enteros)
- * Retorno: 0 en caso de éxito, 1 en caso de error
+ * Rurn: 0 en caso de éxito, 1 en caso de error
  */
 int main(int argc, char **argv)
 {
-	int n, j = 0;
+	int i, j = 0;
 
 	if (argc != 3)
 	{
 		printf("Error\n");
 		exit(98);
 	}
-	for (n = 1; argv[n]; n++)
-		for (j = 0; argv[n][j]; j++)
-			if (argv[n][j] < '0' || argv[n][j] > '9')
+	for (i = 1; argv[i]; i++)
+		for (j = 0; argv[i][j]; j++)
+			if (argv[i][j] < '0' || argv[i][j] > '9')
 			{
 				printf("Error\n");
 				exit(98);
