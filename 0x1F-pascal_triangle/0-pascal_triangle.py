@@ -21,3 +21,4 @@ def pascal_triangle(n):
             list_pascuales[i].append(1)
 
     return list_pascuales
+    
